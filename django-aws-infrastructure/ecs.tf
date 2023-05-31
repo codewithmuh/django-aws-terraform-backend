@@ -32,7 +32,6 @@ resource "aws_ecs_task_definition" "prod_backend_web" {
 }
 
 resource "aws_ecs_service" "prod_backend_web" {
-  enable_execute_command             = true
   name                               = "prod-backend-web"
   cluster                            = aws_ecs_cluster.prod.id
   task_definition                    = aws_ecs_task_definition.prod_backend_web.arn
@@ -41,6 +40,7 @@ resource "aws_ecs_service" "prod_backend_web" {
   deployment_maximum_percent         = 200
   launch_type                        = "FARGATE"
   scheduling_strategy                = "REPLICA"
+  enable_execute_command             = true
 
   load_balancer {
     target_group_arn = aws_lb_target_group.prod_backend.arn
@@ -92,13 +92,14 @@ resource "aws_iam_role" "prod_backend_task" {
       }
     ]
   })
-    inline_policy {
+
+  inline_policy {
     name = "prod-backend-task-ssmmessages"
     policy = jsonencode({
       Version = "2012-10-17"
       Statement = [
         {
-          Action   = [
+          Action = [
             "ssmmessages:CreateControlChannel",
             "ssmmessages:CreateDataChannel",
             "ssmmessages:OpenControlChannel",

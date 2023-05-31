@@ -5,3 +5,9 @@ docker push 373903915873.dkr.ecr.us-east-2.amazonaws.com/django-aws-backend:late
 #key Points
 
 1.  make sure to update apply and push new images(not duplciate in part 01)
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install jq
+
+808080
