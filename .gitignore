@@ -1,0 +1,12 @@
+django-aws-infrastructure/.terraform.lock.hcl
+django-aws-infrastructure/.terraform/providers/registry.terraform.io/hashicorp/aws/5.0.1/darwin_amd64/terraform-provider-aws_v5.0.1_x5
+
+
+*.sqlite3
+.idea
+.env
+venv
+.DS_Store
+__pycache__
+static
+media
